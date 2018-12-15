@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    align-content: center;
+}  
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+
+h1 {
+    font-family: 'Carter One', cursive;
+}
+
+header {
+    color: white;
+    background: black;
+    text-align: center;
+    align-content: center;
+    font-size: 80px;
+    font-family: 'Carter One', cursive;
+    height: 100px;
+    top: 15px;  
+    padding: 10 auto;
+    clear: both;
+    
+}
+
+#alphabet-keypad {
+    color: white;
+    background: black;
+    align-content: center;
+    font-size: 10px;
+    font-family: 'Carter One', cursive;
+    float: left;
+    margin-left: 50px;
+}
+
+.cosenWord {
+    color: white;
+    background: black;
+    text-align: right;
+    align-content: center;
+    font-size: 60px;
+    font-family: 'Carter One', cursive;
+    float: center;
+    margin-left: 50px;
+
+}
+
+.banksy
+ {
+
+    align-content: center;
+    height: 250px;
+    width: 300px;
+    float: center;
+ }
+
+ .row {
+    width: 100%;
+  }
+  
+  /* Styles for the alphabet keypad */
+  #alphabet-keypad {
+    margin-left: 4%;
+    text-align: center;
+  }
+  .letter-button, .letter-disabled {
+    border-radius: 50%;
+    display: inline-block;
+    font-family: monospace;
+    font-size: 1.6em;
+    height: 1.6em;
+    margin: 0.2em 0.1em;
+    padding-top: 0.1em;
+    width: 1.6em;
+  
+    transition: color 0.2s,
+    background-color 0.2s;
+  }
+  .letter-button {
+    border: 1px solid rgb(60, 160, 210);
+    color: rgb(60, 160, 210);
+  }
+  .letter-button:hover {
+    background-color: rgb(60, 160, 210);
+    color: white;
+    cursor: pointer;
+  }
+  .letter-disabled {
+    border: 1px solid lightgrey;
+    color: lightgrey;
+    cursor: default;
+  }
+  
+@media (max-width: 767px) {
+#alphabet {
+padding:0 0 0 15px;
+}
+}
+
+@media (max-width: 480px) {
+#alphabet {
+padding:0 0 0 25px;
+}
+}
+
+

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="Hangman.css" />
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <header id="header">
+                <h1>
+                    This is the Art of Hangman
+                </h1>
+            </header>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6" style="margin: 20px; padding-bottom: 50px;">
+                <div id="chosenWord">
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <img class="banksy" src="file:///Users/marcobrugo/Desktop/code/Hangman%20Game%20HW%203/image.jpg"
+                        alt="bansky">
+                </div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="rightGuess">
+                    <h1>Right Guesses: </h1>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div id="wrongGuess">
+                    <h1>Wrong Guesses: </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div id="guessed-letters">
+                    <h1>All Letter Guessed: </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="wins"> Wins: </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="losses"> Losses: </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button id="clear">Play Again!</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+
+            var words = ['banksy', 'michaelangelo', 'polluck', 'rembrandt', 'warhol', 'picasso'];
+            let randomNum = Math.floor(Math.random() * words.length);
+            let chosenWord = words[randomNum];
+
+            let rightWords = [];
+            let wrongWords = [];
+            var underScores = ['_ ']
+
+            console.log(randomNum);
+            console.log(chosenWord);
+
+            //replace words with underscores
+            let generateUnderscores = () => {
+                for (var i = 0; i < chosenWord.length; i++) {
+                    underScores.push('_ ');
+                }
+                return underScores
+            }
+            let index = generateUnderscores();
+            $('#chosenWord').append(index);
+            
+            console.log(index)
+
+            var wins;
+            var losses;
+            var lives = 10;
+
+            //user input
+            function game() {
+                document.addEventListener('keypress', (event) => {
+                    let keyCode = event.keyCode
+                    let keyWord = String.fromCharCode(keyCode);
+
+                    if (chosenWord.indexOf(keyWord) > -1) {
+                        //add right words to right array
+                        $('#rightGuess').append(keyWord);
+
+                        rightWords.push(keyWord);
+                        console.log(rightWords);
+
+
+                        if (rightWords.join("") == chosenWord) {
+
+                            alert("You Won! The artist was:  " + chosenWord);
+                            wins++;
+                        }
+                        return wins;
+                        $('#wins').append(wins);
+
+                    }
+
+                    else {
+                        $('#wrongGuess').append(keyWord);
+                        wrongWords.push(keyWord);
+                        lives--;
+                        if (lives === 0) {
+                            alert("You Lost! The artist was:  " + chosenWord + "\r You can press play again to start the game over!");
+                            losses++;
+                            $('#losses').append(losses);
+                        } else {
+                        }
+                    }
+
+                });
+                return lives;
+                $('#lives').append(lives);
+            }
+            game();
+            var reset = function reset() {
+                $(".clear").on("click", function () {
+                    for (m = 1; m < 10; m++) {
+                        if (wins++) {
+
+                            game().empty();
+                            $('#chosenWord').empty
+                        }
+                        if (wins > 5) {
+                            alert("You are too good! Well done! The machine cant beat you so the program will end now");
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
